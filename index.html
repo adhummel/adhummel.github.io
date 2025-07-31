@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Name</title>
+    <meta content="Your Name" property="og:title">
+    <meta content="Brief description about yourself and your work." name="description">
+    <meta content="Brief description about yourself and your work." property="og:description">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @keyframes borderPulse {
+            0% {
+                border-color: #b0c4de; /* light steel blue */
+            }
+            15% {
+                border-color: #5f9ea0; /* coral pink */
+            }
+            30% {
+                border-color: #668dba; /* slate blue */
+            }
+            45% {
+                border-color: #a4b8c4; /* mint green */
+            }
+            60% {
+                border-color: #6a7b8a; /* orange peach */
+            }
+            75% {
+                border-color: #4682b4; /* lavender */
+            }
+            90% {
+                border-color: #5f9ea0; /* hot pink */
+            }
+            100% {
+                border-color: #b0c4de; /* back to start */
+            }
+        }
+
+        .profile-photo {
+            width: 205px;
+            height: 205px;
+            border-radius: 100%;
+            border: 2.24px solid #b0c4de;
+            margin: 1.5rem auto 1rem auto;
+            display: block;
+            object-fit: cover;
+            animation: borderPulse 12s ease-in-out infinite;
+        }
+        
+        .company-logo {
+            height: 40px;
+            width: 40px;
+            border: 1px solid #b0c4de;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 0.5rem 0;
+        }
+        
+        dt {
+            margin: 1rem 0 0.2rem 0;
+        }
+        
+        dd {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11pt;
+            padding: 2rem 1rem 0 1rem;
+            line-height: 1.15;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(248, 249, 250, 0.3) 0%, transparent 65%),
+                radial-gradient(circle at 80% 70%, rgba(230, 235, 246, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(250, 251, 252, 0.2) 0%, transparent 55%),
+                #fafbfc;
+            min-height: 100vh;
+        }
+
+        ul li {
+            margin: 0.5rem 0;
+        }
+        
+        pre {
+            padding-left: 1rem;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #4a90e2;
+            cursor: pointer;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            color: #357abd;
+        }
+        
+        h1 {
+            margin-bottom: 0px;
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        h2 {
+            margin: 2rem 0 1rem 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .intro {
+            text-align: left;
+            margin: 1rem 0 2rem 0;
+        }
+        
+        .contact-links {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .contact-links a {
+            margin: 0 1.6rem;
+        }
+        
+        .email-link {
+            position: relative;
+            cursor: pointer;
+            color: #4a90e2;
+            font-weight: bold;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+
+        #email-tooltip {
+            position: absolute;
+            top: -1.5rem;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .email-link.show-tooltip #email-tooltip {
+            opacity: 1;
+        }
+
+
+        .pdf-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            margin: 0.2rem 0.3rem 0.2rem 0;
+            font-size: 0.9em;
+        }
+        
+        .pdf-link:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .footer {
+            color: grey;
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-description {
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        
+        @media screen and (max-width: 550px) {
+            body {
+                padding: 0 0.5rem;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<script>
+    const email = "andrewhummel22@gmail.com";
+
+    function copyEmail() {
+        navigator.clipboard.writeText(email).then(() => {
+            const tooltip = document.getElementById("email-tooltip");
+            tooltip.innerText = "Copied!";
+            document.querySelector(".email-link").classList.add("show-tooltip");
+            setTimeout(() => {
+                document.querySelector(".email-link").classList.remove("show-tooltip");
+            }, 1000);
+        });
+    }
+
+    function showEmail() {
+        document.getElementById("email-label").innerText = email;
+    }
+
+    function hideEmail() {
+        document.getElementById("email-label").innerText = "Email";
+    }
+</script>
+
+<body>
+    <!-- Profile Photo -->
+    <p><img class="profile-photo" alt="Picture of me" src="profile-photo.png"></p>
+    <!-- Name and Introduction -->
+    <h1>Andrew Hummel</h1>
+    <div class="intro">
+        <p>I work at the intersection of data systems and economic policy.
+Currently building data infrastructure and analytics for a startup navigating the early-stage chaos.</p>
+    </div>
+
+    <h2>Employment</h2>
+    <div class="logo-container">
+        <img class="company-logo" src="millybooks_logo-removebg-preview.png" alt="Company logo">
+        <div>
+            <dt><dt style="margin-bottom: 0.3rem;"><strong>Head of Data Strategy</strong> @ <a href="https://www.millybooks.com">Milly Books</a> (2023—Present)</dt>
+        </dt>
+            <dd>First hire @ Milly; Built and owned the end-to-end data stack (dbt, Dagster, Metabase), defined core metrics from 0 → 1, and shipped analytics and pipelines that drove GTM decisions, seller engagement, and buyer targeting</dd>
+        </div>
+    </div>
+    
+    <div class="logo-container">
+        <img class="company-logo" src="xometry_logo.jpeg" alt="Company logo">
+        <div>
+            <dt><dt style="margin-bottom: 0.3rem;"><strong>Marketplace Research Intern</strong> @ <a href="https://www.xometry.com">Xometry</a> (2021—2023)</dt>
+            <dd>I worked on platform economics and supply-demand modeling for bizops—segmenting buyers, identifying supply bottlenecks, and modeling price elasticity to help make custom manufacturing more efficient and scalable</dd>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <h2>Education</h2>
+    <dl>
+        <dt><strong>M.Sc. International Public and Social Policy</strong> (2023—2024)</dt>
+        <dd><a href="https://www.lse.ac.uk">London School of Economics and Political Science</a> - Coursework focus on intersections in artificial intelligence, national security, and surveillance, with my dissertation focusing on algorithmic workplace surveillance under the GDPR.</dd>
+
+        <dt><strong>Final Year Bachelor's Exchange</strong> (2021—2022)</dt>
+        <dd><a href="https://www.uzh.ch/en.html">University of Zürich</a> - Courses in international fiscal policy dynamics, investment flows, and China’s Belt & Road Initiative</dd>
+        
+        <dt><strong>B.S. Economics</strong> (2018—2022)</dt>
+        <dd><a href="https://www.uky.edu">University of Kentucky</a></dd>
+    </dl>
+
+    <!-- Personal Projects -->
+    <h2>Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-title">Historical Precedents for AI-Driven Economic Hegemony (2025)</div>
+            <div class="project-description">
+                Brief description of the project, technologies used, and what it accomplishes.
+            </div>
+            <div class="project-links">
+                <a href="project1.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Project Report (PDF)</a>
+                <a href="https://github.com/yourusername/project1" class="pdf-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Enabling the Panpoticon?
+                GDPR, Employee Power, and Workplace Surveillance (2024)</div>
+            <div class="project-description">
+                Distinction-earning <span style="text-decoration: underline;">LSE master's dissertation</span>; I explored how well the GDPR protects employees from modern workplace surveillance powered by machine learning
+            </div>
+            <div class="project-links">
+                <a href="masters_diss.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Paper (PDF)</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Modeling Returns in Deep Tech Climate Portfolios (2025)</div>
+            <div class="project-description">
+                Description of another project you're proud of.
+            </div>
+            <div class="project-links">
+                <a href="project2.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Documentation (PDF)</a>
+                <a href="https://live-demo-url.com" class="pdf-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Measuring AI's Sectoral Impact Across Global Markets (2024)</div>
+            <div class="project-description">
+                Description of another project you're proud of.
+            </div>
+            <div class="project-links">
+                <a href="project2.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Documentation (PDF)</a>
+                <a href="https://live-demo-url.com" class="pdf-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Modeling Economic Fragility in the Age of Semiconductor Reliance (2024)</div>
+            <div class="project-description">
+                Another project description.
+            </div>
+            <div class="project-links">
+                <a href="project3.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Technical Paper (PDF)</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">A Quantitative Assessment of Fusion Energy's Development Potential (2023)</div>
+            <div class="project-description">
+                Another project description.
+            </div>
+            <div class="project-links">
+                <a href="project3.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Technical Paper (PDF)</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Predicting and Preempting Fossil Fuel Resistance to Fusion Energy (2025)</div>
+            <div class="project-description">
+                Description of another project you're proud of.
+            </div>
+            <div class="project-links">
+                <a href="project2.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">Documentation (PDF)</a>
+                <a href="https://live-demo-url.com" class="pdf-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Links -->
+    <div class="contact-links">
+        <!-- Contact Links -->
+    <div class="contact-links">
+        <span class="email-link" onclick="copyEmail()" onmouseenter="showEmail()" onmouseleave="hideEmail()">
+            <span id="email-label">Email</span>
+            <span id="email-tooltip" class="copied-tooltip">Copied!</span>
+        </span>
+        <a href="https://www.linkedin.com/in/andrew-hummel-412480194/"><strong>LinkedIn</strong></a>
+        <a href="https://github.com/adhummel"><strong>GitHub</strong></a>
+    </div>
+
+    <p class="footer">
+        Last updated on <span id="current-date"></span>.
+    </p>
+
+    <script>
+        // Auto-update the current date
+        document.getElementById('current-date').textContent = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
