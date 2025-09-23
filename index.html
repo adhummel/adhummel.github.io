@@ -14,6 +14,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 6px rgba(74,144,226,0.6),
+                            0 0 12px rgba(74,144,226,0.4),
+                            0 0 18px rgba(74,144,226,0.2);
+            }
+            50% {
+                box-shadow: 0 0 14px rgba(74,144,226,0.8),
+                            0 0 28px rgba(74,144,226,0.5),
+                            0 0 40px rgba(74,144,226,0.3);
+            }
+            100% {
+                box-shadow: 0 0 6px rgba(74,144,226,0.6),
+                            0 0 12px rgba(74,144,226,0.4),
+                            0 0 18px rgba(74,144,226,0.2);
+            }
+        }
+
         @keyframes borderPulse {
             0% {
                 border-color: #b0c4de; /* light steel blue */
@@ -52,6 +70,40 @@
             animation: borderPulse 12s ease-in-out infinite;
         }
         
+        .resume-bubble {
+            position: fixed;          /* stays put even when scrolling */
+            top: 1.5rem;              /* distance from top */
+            right: 1.5rem;            /* distance from right */
+            background: #4a90e2;      /* main color (matches your link color) */
+            color: white;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;     /* perfect circle/oval feel */
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;            /* keeps it on top of everything */
+            transition: background 0.3s, transform 0.2s;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .resume-bubble:hover {
+            background: #357abd;      /* darker blue on hover */
+            color: white;
+            transform: scale(1.05);   /* slight grow effect */
+            animation: pulse-glow 1.8s ease-in-out infinite;
+        }
+
+        @media screen and (max-width: 550px) {
+            .resume-bubble {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
         .company-logo {
             height: 40px;
             width: 40px;
@@ -116,7 +168,7 @@
         }
         
         h1 {
-            margin-bottom: 0px;
+            margin-bottom: 2.5px;
             text-align: center;
             font-weight: 700;
             font-family: 'Open Sans', sans-serif;
@@ -132,6 +184,9 @@
         .intro {
             text-align: left;
             margin: 1rem 0 2rem 0;
+            max-width: 650px;          /* optional: limit width for readability */
+            margin-left: auto;         /* center the block itself */
+            margin-right: auto;
         }
         
         .contact-links {
@@ -378,5 +433,9 @@
         // Auto-update the current date
         document.getElementById('current-date').textContent = new Date().toISOString().split('T')[0];
     </script>
+        <!-- Floating Resume Bubble -->
+    <a href="Andrew_Hummel_Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-bubble">
+        Full Resume (PDF)
+    </a>
 </body>
 </html>
